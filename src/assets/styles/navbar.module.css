@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --text: #271302;
+    --background: rgb(255, 252, 250);
+    --primary: rgb(90, 176, 246);
+    --secondary: rgb(197, 200, 252);
+    --accent: rgb(12, 233, 222);
+}
+.navbarContainer{
+    background: rgba(37, 35, 35, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.3px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border: 1px solid rgba(37, 35, 35, 0.1);
+    height: 4rem;
+    overflow: hidden;
+}
+.Nav{
+    width: 100%;
+}
+.navbarContainer .Nav ul{
+    height: 100%;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbarContainer .Nav ul li{
+    color: var(--background);
+}
+
+ul li.logo img{
+    width: 3rem;
+}
+
+@media screen and (max-width:770px){
+    .navbarContainer{
+        visibility: hidden;
+    }
+}

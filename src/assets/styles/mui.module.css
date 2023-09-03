@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --text: #271302;
+    --background: rgb(255, 252, 250);
+    --primary: rgb(90, 176, 246);
+    --secondary: #c5c8fc;
+    --accent: rgb(12, 233, 222);
+}
+
+/* service-CArd */
+.card{
+    border: 2px solid var(--accent);
+    transition: 1s ease;
+    transform: translateY(-0.3rem);
+}
+
+/* serviceBtn */
+
+.serviceBtnBox{
+    
+    position:absolute;
+    bottom:1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* drawer */
+
+.drawer{
+    position: fixed;
+    margin-top: 0.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1000;
+    display: none;
+    /* From https://css.glass */
+    background: rgba(197, 200, 252, 0.23);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.1px);
+    -webkit-backdrop-filter: blur(5.1px);
+    border: 1px solid rgba(197, 200, 252, 0.74);
+}
+.drawerBtn{
+    color: var(--text);
+}
+
+.drawerbox{
+    /* From https://css.glass */
+    background: rgba(197, 200, 252, 0.23);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.6px);
+    -webkit-backdrop-filter: blur(2.6px);
+    border: 1px solid rgba(197, 200, 252, 0.28);
+    height: 100%;
+}
+
+
+
+@media screen and (max-width:770px){
+  .drawer{
+    display: block;
+  }
+}
+

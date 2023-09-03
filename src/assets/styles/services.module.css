@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --text: #271302;
+    --background: rgb(255, 252, 250);
+    --primary: rgb(90, 176, 246);
+    --secondary: rgb(197, 200, 252);
+    --accent: rgb(12, 233, 222);
+}
+
+.servicesWrapper {
+    width: 100%;
+    background-color: var(--background);
+    overflow: hidden;
+    transform: translateY(-4rem);
+}
+
+.ServicesHero {
+    height: 55vh;
+    background-image: linear-gradient(90deg, rgba(90, 176, 246, 0.5), rgba(0, 0, 0, 0.8)), url(../images/hero.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ServicesHero h1 {
+    font-size: 4.0rem;
+    background-image: linear-gradient(43deg,rgb(90, 176, 246),rgb(12, 233, 222));
+    color: transparent;
+    background-clip: text; 
+    font-weight: 400;   
+}
+
+.ServicesHero p{
+    color: var(--secondary);
+}
+
+
+/* ===================Cards DIsplay ======================= */
+
+.ServicesCards{
+    width: 90%;
+    display: flex;
+    gap:2rem;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    transform: translateY(-35%);
+}
+
+.count{
+    position: absolute;
+    bottom:1rem;
+    left: 90%;
+    height: 2.9rem;
+    width: 2.9rem;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.serviceBtn{
+    height:3.5rem;
+    width:12rem;
+    position:absolute;
+    top:21.7rem;
+    background-color: coral ;
+    margin-top:3rem;
+}
+
+@media screen and (max-width:770px){
+    .ServicesCards{
+        flex-direction: column;
+        transform: translateY(-8%);
+        align-items: center;
+    }
+}
