@@ -12,7 +12,7 @@ import styles from '../assets/styles/mui.module.css'
 
 export default function CustomCard({img,role,updateitem,selected}) {
   return (
-    <Card sx={{ maxWidth: 530, transition:"1s ease" }} className={selected?styles.card:null} variant="outlined">
+    <Card sx={{ maxWidth: 530, transition:"1s ease" }} className={selected?styles.card:null}>
       <CardActionArea>
         <CardMedia
           component="img"

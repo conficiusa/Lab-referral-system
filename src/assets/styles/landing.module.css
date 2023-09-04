@@ -93,6 +93,13 @@
     bottom: 0;
 }
 
+.landinglogo{
+    width: 5rem;
+    position: absolute;
+    top:0.8rem;
+    left: 0.8rem;
+}
+
 
 
 /* =======================Responsiveness=================== */
@@ -124,6 +131,21 @@
   .landingBtn{
     margin: 0 auto;
   }
+  .landinglogo{
+    left: 88%;
+  }
+}
+
+@media screen and (max-width:700px){
+    .landinglogo{
+        left:79%
+    }
+}
+
+@media screen and (max-width:400px){
+    .landinglogo{
+        left:69%
+    }
 }
 
 

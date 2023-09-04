@@ -1,10 +1,14 @@
 import styles from '../assets/styles/landing.module.css'
 import landingpic from '../assets/images/landingpic.svg'
 import { LoginSharp } from '@mui/icons-material'
+import logo from '../assets/images/logo.png'
 
 export default function Landing(){
     return(
-        <header className={styles.landingContainer}>
+        <header className={styles.landingContainer} id="landing">
+            <div className={styles.landinglogo}>
+                <img src ={logo} alt="logo"/>
+            </div>
             <main className={styles.landingShowcase}> 
                 <div className={styles.landingLeft}>
                         <div className={styles.landingBigtitle}>

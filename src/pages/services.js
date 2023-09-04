@@ -29,10 +29,10 @@ function Services() {
           return item;
         });
         setItems(updatedItems);
-        
+
       }
   return (
-    <div className={styles.servicesWrapper}>
+    <div className={styles.servicesWrapper} id="service">
         <section className={styles.servicesContainer}>
             <div className={styles.ServicesHero}>
                 <div className={styles.Servicestext}>

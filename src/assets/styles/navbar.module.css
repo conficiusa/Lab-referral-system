@@ -29,11 +29,23 @@
 
 .navbarContainer .Nav ul li{
     color: var(--background);
+    cursor: pointer;
+    transition: all 400ms ease;
 }
 
+.navbarContainer .Nav ul li:hover{
+    scale: 1.1;
+}
+.Nav ul li a{
+    text-decoration: none;
+    color: inherit;
+ }
 ul li.logo img{
     width: 3rem;
+    margin-top: 0.5rem;
 }
+
+
 
 @media screen and (max-width:770px){
     .navbarContainer{

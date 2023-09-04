@@ -80,4 +80,7 @@
         transform: translateY(-8%);
         align-items: center;
     }
+    .count{
+        display: none;
+    }
 }

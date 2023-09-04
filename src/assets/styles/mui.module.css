@@ -10,7 +10,7 @@
 
 /* service-CArd */
 .card{
-    border: 2px solid var(--accent);
+    outline: 0.8px solid var(--accent);
     transition: 1s ease;
     transform: translateY(-0.3rem);
 }

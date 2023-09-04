@@ -7,9 +7,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { Button } from '@mui/material';
-import { BookOnlineSharp, GridViewSharp, MenuSharp } from '@mui/icons-material';
+import { BookOnlineSharp, GridViewSharp, InsightsSharp, LoginSharp, MenuSharp, SettingsSharp } from '@mui/icons-material';
 import styles from '../assets/styles/mui.module.css'
 import { HomeSharp } from '@mui/icons-material';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
@@ -32,9 +31,11 @@ export default function SwipeableTemporaryDrawer() {
   };
   const drawerItems=[
     {text:"Home", icons: <HomeSharp/>},
-    {text:"Dashboard", icons: <GridViewSharp/>},
     {text:"Book Now", icons: <BookOnlineSharp/>},
+    {text:"Dashboard", icons: <GridViewSharp/>},
+    {text:"Analytics", icons: <InsightsSharp/>} ,
     {text:"Tracking", icons: <LocationSearchingIcon/>},
+    {text:"Settings", icons: <SettingsSharp/>},
 ]
 
   const list = (anchor) => (
@@ -45,7 +46,7 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
       className={styles.drawerbox}
     >
-      <List mt="7">
+      <List>
         {drawerItems.map((item) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton>
@@ -59,16 +60,30 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Services', 'About Us', 'Contact','FAQ', 'Account'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}
+      </List>
+      <Divider />
+      <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+            <Button endIcon={<LoginSharp/>} 
+                        sx={{
+                          color:"rgb(255, 252, 250)", 
+                          paddingLeft:"3rem",paddingRight:"3rem",
+                          backgroundColor:'#271302',
+                        
+                        }} 
+                          className={styles.navbarlogin}>
+                          Login
+                        </Button>
+            </ListItemButton>
+          </ListItem>
       </List>
     </Box>
   );
