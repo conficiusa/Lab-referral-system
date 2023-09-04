@@ -52,7 +52,7 @@ function Services() {
                     ))}
             </div>
             <div className={styles.servicesBtn}>
-              <Buttons count={count}/>
+              <Buttons count={count} text="proceed"/>
             </div>
 {count> 0 &&<div className={styles.count}>
                       {count}

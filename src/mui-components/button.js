@@ -5,7 +5,7 @@ import styles from '../assets/styles/mui.module.css'
 import  DoubleArrowSharp from '@mui/icons-material/DoubleArrowSharp';
 
 
-export default function Buttons({count}) {
+export default function Buttons({count, text}) {
   return (
     <Box className={styles.serviceBtnBox}>
        <Button variant="contained" 
@@ -24,7 +24,7 @@ export default function Buttons({count}) {
               disabled={count<1}
               className={styles.serviceBtn}
              >
-                Proceed
+                {text}
         </Button>
     </Box>
       
