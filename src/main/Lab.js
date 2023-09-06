@@ -4,6 +4,7 @@ import Services from '../pages/services'
 import Contact from '../pages/contact'
 import CustomNavbar from '../components/navbar'
 import SwipeableTemporaryDrawer from '../mui-components/drawer'
+import Footer from '../pages/footer'
 
 
 function Lab() {
@@ -16,6 +17,7 @@ function Lab() {
         <CustomNavbar/>
         <Services/>
         <Contact/>
+        <Footer/>
     </div>
   )
 }

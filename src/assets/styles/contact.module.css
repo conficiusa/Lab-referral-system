@@ -10,9 +10,9 @@
 
 .contactWrapper{
     width: 100%;
-    height: 110vh;
     margin-top: -4rem;
     background-color: var(--background);
+    height: 150vh;
 }
 
 .contactContainer{
@@ -23,7 +23,6 @@
 
 .topcontent{
     width: 100%;
-    height: 50vh;
     display: grid;
     grid-template-columns: 1fr 0.01fr 1fr;
     gap: 4rem;
@@ -165,7 +164,28 @@ form .third  .userbox label{
     padding: 4%;
 }
 
+/* maps */
+
+.contactdown{
+    height: 60vh;
+    width:100%;
+    margin-top: 3rem;
+    border-radius: 6px;
+
+}
+.contactmap{
+    height: 50vh;
+    width:100%;
+    box-shadow: 2px 3px 16px 9px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 2px 3px 16px 9px rgba(0,0,0,0.08);
+    -moz-box-shadow: 2px 3px 16px 9px rgba(0,0,0,0.08);
+}
+
+
 @media screen and (max-width:770px){
+    .contactWrapper{
+        height: auto;
+    }
     .divider{
         display: none;
     }
