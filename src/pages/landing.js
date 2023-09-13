@@ -2,6 +2,7 @@ import styles from '../assets/styles/landing.module.css'
 import landingpic from '../assets/images/landingpic.svg'
 import { LoginSharp } from '@mui/icons-material'
 import logo from '../assets/images/logo.png'
+import { Link } from 'react-router-dom'
 
 export default function Landing(){
     return(
@@ -17,7 +18,9 @@ export default function Landing(){
                         </div>
                         <p className={styles.landingText}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, veniam aperiam error facilis quaerat praesentium totam optio necessitatibus excepturi.</p>
                         <div className={styles.landingCta}>
-                            <button className={styles.landingBtn}>Get Started <LoginSharp className={styles.span}/></button>
+                            <Link to="booking">
+                                <button className={styles.landingBtn}>Get Started <LoginSharp className={styles.span}/></button>
+                            </Link>
                         </div>
                     </div>
         

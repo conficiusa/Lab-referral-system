@@ -6,7 +6,6 @@ import CustomNavbar from '../components/navbar'
 import SwipeableTemporaryDrawer from '../mui-components/drawer'
 import Footer from '../pages/footer'
 
-
 function Lab() {
   const iOS =
   typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);

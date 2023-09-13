@@ -1,12 +1,12 @@
 import './App.css';
-import Lab from './main/Lab';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FullApp from './main/fullapp';
 
 
 function App() {
   return (
     <div>
-      <Lab/>
+      <FullApp/>
     </div>
   );
 }

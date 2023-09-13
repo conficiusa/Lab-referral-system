@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --text: #271302;
+    --background: rgb(255, 252, 250);
+    --primary: rgb(90, 176, 246);
+    --secondary: rgb(197, 200, 252);
+    --accent: rgb(12, 233, 222);
+}
+.orderwrapper{
+    font-family: "poppins", sans-serif;
+    width: calc(100vw - 300px);
+    margin: 0 auto;
+    overflow: hidden;
+}
+.orderform{
+    width: 100%;
+}
+.formwrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+}
+.orderright{
+    margin-right: 2rem;
+}
+.orderleft .item:not(:first-child){
+    margin-top: 1.5rem;
+}
+.orderright .item:not(:first-child){
+    margin-top: 1.2rem;
+}
+
+.orderpagination{
+    margin-top: 2.5rem !important;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+@media screen and (max-width:1024px){
+    .formwrapper{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width:600px){
+    .orderwrapper{
+        width: calc(100vw - 35px);
+        margin-inline: auto;
+    }
+}
+
+
