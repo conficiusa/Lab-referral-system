@@ -6,25 +6,43 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Route, Routes } from 'react-router-dom';
 import BookingForm from '../components/booking-sections/BookingForm';
-
+import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
+import { BookOnlineSharp, GridViewSharp,  HomeSharp, InsightsSharp, LogoutSharp, SettingsSharp } from '@mui/icons-material';
+import { Button } from '@mui/material';
+import styles from '../assets/styles/mui.module.css'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [section, setSection] = useState(0)
 
+  const ConditionalSection = () =>{
+    switch (section) {
+      case 0 :
+        return <BookingForm/>
+      default:
+        return <BookingForm/>
+    }
+  }
+  const drawerItems=[
+    {text:"Book Now", icons: <BookOnlineSharp/>, section:0},
+    {text:"Dashboard", icons: <GridViewSharp/>, section: 1},
+    {text:"Analytics", icons: <InsightsSharp/>, section: 2} ,
+    {text:"Tracking", icons: <LocationSearchingIcon/>, section:3},
+    {text:"Settings", icons: <SettingsSharp/>, section: 4},
+]
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -32,31 +50,35 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <Toolbar />
+      <Link to="/">
+        <Button startIcon={<HomeSharp/>} size="large" sx={{ width:"100%"}}>Home</Button>
+      </Link>
+      <Divider />
+      <>
+        {drawerItems.map((item) => (
+          <List>
+            <ListItem key={item.text} disablePadding onClick={()=>setSection(item.section)}>
+              <ListItemButton>
+                <ListItemIcon>
+                  {item.icons}
+                </ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        ))}
+      </>   
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+            <Button startIcon={<LogoutSharp/>} 
+                          sx={{fontSize:"1rem",marginTop:"5rem"}}
+                          className={styles.navbarlogin}>
+                          Logout
+                        </Button>
             </ListItemButton>
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
       </List>
     </div>
   );
@@ -83,7 +105,7 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h4" noWrap component="div">
             Confi's Labs
           </Typography>
         </Toolbar>
@@ -126,10 +148,7 @@ function ResponsiveDrawer(props) {
       >
         <Toolbar/>
         <Box>
-          <Routes>
-            <Route path='/' element={<BookingForm/>}/>
-          </Routes>
-              
+          {ConditionalSection()}
         </Box>
       </Box>
     </Box>

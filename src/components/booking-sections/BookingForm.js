@@ -10,6 +10,7 @@ export default function BookingForm() {
     institution_type: '',
     admin_name : "" ,
     facilty_name:"",
+    set_schedule: null,
     services_needed: [],
     setDestination: "",
     destination: "",
@@ -22,11 +23,11 @@ export default function BookingForm() {
   const ConditionalComponents = () =>{
     switch (page) {
       case 0 :
-        return <First  formData={formData} setFormData={setFormData} time_Sample={formData.time_Sample}/>;
+        return <First  formData={formData} setFormData={setFormData} set_schedule={formData.set_schedule}/>;
       case 1 :
-        return <Second  formData={formData} setFormData={setFormData}/>
+        return <Second  formData={formData} setFormData={setFormData} time_Sample={formData.time_Sample}/>
       default:
-        return <First  formData={formData} setFormData={setFormData}/>
+        return <First  formData={formData} setFormData={setFormData} set_schedule={formData.set_schedule}/>
     }
   }
   return (
@@ -35,14 +36,14 @@ export default function BookingForm() {
        <h6>Please fill the form below to book your desired service</h6>
        <h4 style={{marginTop:"1.5rem"}}>
         {page===0 && "General Information"}
-        {page===1 && "Specific"}
+        {page===1 && "Specific Information"}
        </h4>
       {ConditionalComponents()}
        <Box className={styles.orderpagination}>
-        <Button size="large" sx={{float:"left"}} onClick={() => {
+        {page !==0 && <Button size="large" sx={{float:"left"}} onClick={() => {
           setPage(page - 1)
           console.log(formData)
-          }}>Back</Button>
+          }}>Back</Button>}
         <Button size="large" sx={{float:"right", fontSize:"1rem"}}  onClick={() => {
           setPage(page + 1)
           console.log(formData)

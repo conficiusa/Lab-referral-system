@@ -3,14 +3,21 @@ import styles from "../../assets/styles/bookingstyles/BookingForm.module.css";
 import { Box, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import MultipleSelectChip from '../../mui-components/chip';
 import ControlledRadioButtonsGroup from '../../mui-components/radio';
-import BasicDateTimePicker from '../../mui-components/datetime';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 const names = [
   "Sample Transportation",
   'Laboratory Testing',
   'Phlebotomy',
 ];
-export default function First({ formData, setFormData,time_Sample }) {
+export default function First({ formData, setFormData,set_schedule}) {
+
+  const handleDateTimeChange = (selectedDateTime) => {
+    setFormData({ ...formData, set_schedule: selectedDateTime });
+  };
   return (
     <Box className={styles.orderwrapper}>
       <FormControl className={styles.orderform} variant="standard" sx={{ marginTop: "1rem", minWidth: 120 }}>
@@ -78,12 +85,16 @@ export default function First({ formData, setFormData,time_Sample }) {
             />
           </Box>
           <Box className={styles.item} sx={{ width: "100%",  }}>
-            <BasicDateTimePicker 
-            formData={formData}
-            setFormData={setFormData}
-            time_Sample={time_Sample}
-            label="Date and Time of sample collection"
-            />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DateTimePicker']}>
+                <DateTimePicker
+                    label="Date and Time of sample collection"
+                    format="DD/MM/YYYY hh:mm a"
+                    onChange={handleDateTimeChange}
+                    value={set_schedule}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
           </Box> 
         </Box>
         </div>

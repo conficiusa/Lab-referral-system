@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export default function Landing(){
     return(
-        <header className={styles.landingContainer} id="landing">
+        <header className={styles.landingContainer} id="landing" >
             <div className={styles.landinglogo}>
                 <img src ={logo} alt="logo"/>
             </div>
@@ -18,7 +18,7 @@ export default function Landing(){
                         </div>
                         <p className={styles.landingText}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, veniam aperiam error facilis quaerat praesentium totam optio necessitatibus excepturi.</p>
                         <div className={styles.landingCta}>
-                            <Link to="booking">
+                            <Link to="booking" className="link">
                                 <button className={styles.landingBtn}>Get Started <LoginSharp className={styles.span}/></button>
                             </Link>
                         </div>
