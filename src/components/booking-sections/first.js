@@ -7,13 +7,16 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { useFormContext } from '../../contexts/FormContext';
 
 const names = [
   "Sample Transportation",
   'Laboratory Testing',
   'Phlebotomy',
 ];
-export default function First({ formData, setFormData,set_schedule}) {
+export default function First() {
+const {formData, setFormData} = useFormContext();
+
 
   const handleDateTimeChange = (selectedDateTime) => {
     setFormData({ ...formData, set_schedule: selectedDateTime });
@@ -91,7 +94,7 @@ export default function First({ formData, setFormData,set_schedule}) {
                     label="Date and Time of sample collection"
                     format="DD/MM/YYYY hh:mm a"
                     onChange={handleDateTimeChange}
-                    value={set_schedule}
+                    value={formData.set_schedule}
                 />
               </DemoContainer>
             </LocalizationProvider>

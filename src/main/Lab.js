@@ -11,7 +11,7 @@ function Lab() {
   typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
   return (
     <div>
-        <Landing/>
+        <Landing />
         <SwipeableTemporaryDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} />
         <CustomNavbar/>
         <Services/>

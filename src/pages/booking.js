@@ -1,10 +1,13 @@
 import React from 'react'
-import ResponsiveDrawer from '../mui-components/bookingside'
+import MiniDrawer from '../mui-components/miniside'
+import { DashboardProvider } from '../contexts/dashboardcontext'
 
 export default function Booking() {
   return (
     <div>
-      <ResponsiveDrawer/>
+      <DashboardProvider>
+        <MiniDrawer/>
+      </DashboardProvider>
     </div>
   )
 }
