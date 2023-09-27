@@ -380,14 +380,6 @@ main .insights>div.expenses .span{
     .main .insights>div{
         width: 100%;
     }
-    .main table tbody tr td:last-child,
-    .main table tbody tr td:first-child{
-        display: none;
-    }
-    .main table thead tr th:last-child,
-    .main table thead tr th:first-child{
-    display: none;
-    }
 
     .right{
         display: grid;

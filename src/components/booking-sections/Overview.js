@@ -11,6 +11,13 @@ import { useOrdersContext } from '../../contexts/orderscontext';
 export default function Overview() {
     const {setDashboardState} = useDashboardContext()
     const {orders} = useOrdersContext()
+    const pendingOrders = () => {
+        if (orders.pending.length > 0) {
+          return <CollapsibleTable orderType={orders.pending} status="pending"/>;
+        } else {
+          return <h6>You have no pending orders</h6>;
+        }
+      };
     
   return (
     <div className={styles.overviewWrapper}>
@@ -77,7 +84,7 @@ export default function Overview() {
             </div>
             <div className={styles.recentorders}>
                 <h2 className={styles.h2}>Pending Orders</h2>
-                    <CollapsibleTable orderType={orders.pending} orders={orders}/>
+                    {pendingOrders()}
                 <Button className={styles.a} onClick={()=>setDashboardState(1)}>Show All</Button>
             </div>
         </div>

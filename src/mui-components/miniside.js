@@ -17,10 +17,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useMediaQuery } from '@mui/material';
-import { BookOnlineSharp, GridViewSharp, InsightsSharp, LocationSearchingOutlined, SettingsSharp } from '@mui/icons-material';
+import { BookOnlineSharp, GridViewSharp, HomeSharp, InsightsSharp, LocationSearchingOutlined, SettingsSharp } from '@mui/icons-material';
 import Dashboard from '../components/booking-sections/Dashboard';
 import BookingForm from '../components/booking-sections/BookingForm';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -153,10 +154,35 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
+            <Link to="/">
+                <ListItem  disablePadding sx={{ display: 'block'}}>
+                  <ListItemButton
+                    sx={{
+                      mb:2.5,  
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color:"#1976d2"
+                      }}
+                    >
+                     <HomeSharp/>
+                    </ListItemIcon>
+                    <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
+                </ListItem>
+            </Link>
         {drawerItems.map((item) => (
             <ListItem key={item.section} disablePadding onClick={()=>setSection(item.section)} sx={{ display: 'block',backgroundColor: section === item.section ? "#f0f0f0" : "transparent" }}>
               <ListItemButton
                 sx={{
+                  mb:2.5,  
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
@@ -167,6 +193,7 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color:"#1976d2"
                   }}
                 >
                   {item.icons}

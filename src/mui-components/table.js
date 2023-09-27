@@ -1,5 +1,4 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -13,10 +12,57 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Button } from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
+import { DeleteOutlineSharp } from '@mui/icons-material';
+import { useOrdersContext } from '../contexts/orderscontext';
+import AlertDialogSlide from './dialog';
 
-function Row(props) {
-  const { order } = props;
+function ControlledCheckbox({ order }) {
+  const {  setOrders } = useOrdersContext();
+
+  const handleChange = () => {
+    setOrders((prevOrders) => {
+      const updatedOrders = { ...prevOrders };
+      const updatedOrder = {
+        ...order,
+        checked: !order.checked, // Toggle the checked state
+      };
+      updatedOrders.pending = updatedOrders.pending.map((o) =>
+        o.orderId === order.orderId ? updatedOrder : o
+      );
+      return updatedOrders;
+    });
+  };
+  return (
+    <Checkbox
+      checked={order.checked}
+      onChange={handleChange}
+      inputProps={{ 'aria-label': 'controlled' }}
+      size="small"
+    />
+  );
+}
+
+
+function Row({ order, status }) {
   const [open, setOpen] = React.useState(false);
+  const { deleteOrder } = useOrdersContext();
+
+  let color = "#2192cd";
+  switch (status) {
+    case "pending":
+      color = "#ffbb55";
+      break;
+    case "fulfilled":
+      color = "#41f1b6";
+      break;
+    case "cancelled":
+      color = "#2192cd";
+      break;
+    default:
+      color = "#2192cd";
+  }
 
   return (
     <React.Fragment>
@@ -33,10 +79,15 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {order.orderId}
         </TableCell>
-        <TableCell align="right">{order.name}</TableCell>
-        <TableCell align="right">{order.orderTime}</TableCell>
-        <TableCell align="right"></TableCell>
-        <TableCell align="right"></TableCell>
+        <TableCell align="center">{order.name}</TableCell>
+        <TableCell align="center">{order.orderTime}</TableCell>
+        <TableCell align="center" sx={{ color: color }}>{status}</TableCell>
+        <TableCell align="center">
+          <Button sx={{ fontSize: "10px", textDecoration: "underline" }} onClick={() => setOpen(!open)}>Details</Button>
+        </TableCell>
+        <TableCell align="center">
+          {status === "pending" ? <ControlledCheckbox order={order} /> : <IconButton onClick={() => deleteOrder(order.orderId)} dialogType="delete"><DeleteOutlineSharp sx={{ color: "red" }} /></IconButton>}
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -50,8 +101,8 @@ function Row(props) {
                   <TableRow>
                     <TableCell>Date</TableCell>
                     <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell align="center">Amount</TableCell>
+                    <TableCell align="center">Total price ($)</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -61,8 +112,8 @@ function Row(props) {
                         {historyRow.date}
                       </TableCell>
                       <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
+                      <TableCell align="center">{historyRow.amount}</TableCell>
+                      <TableCell align="center">
                         {Math.round(historyRow.amount * order.price * 100) / 100}
                       </TableCell>
                     </TableRow>
@@ -77,43 +128,56 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  order: PropTypes.shape({
-    orderId: PropTypes.number.isRequired,
-    name: PropTypes.number.isRequired,
-    orderTime: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
+export default function CollapsibleTable({ orderType, status }) {
+  const [open, setOpen] = React.useState(false);
+  const { orders, markOrderAsCompleted, cancelOrders } = useOrdersContext();
+ 
+  const handleActionsClick = ()=>{
+    setOpen(true)
+  }
+  const selectedOrders = orders.pending.filter((order) => order.checked);
 
-export default function CollapsibleTable({orderType}) {
+  const handleMarkAsCompleted = () => {
+    selectedOrders.forEach((order) => {
+      markOrderAsCompleted(order.orderId);
+    });
+  };
+  const handlecancelOrders = () => {
+    selectedOrders.forEach((order) => {
+      cancelOrders(order.orderId);
+    });
+  };
+
   return (
+    <div>
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">name</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell sx={{ fontWeight: 600 }}>Order ID</TableCell>
+            <TableCell align="center" sx={{ fontWeight: 600 }}>Name</TableCell>
+            <TableCell align="center" sx={{ fontWeight: 600 }}>Time of Order</TableCell>
+            <TableCell align="center" sx={{ fontWeight: 600 }}>Status</TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center">
+              {selectedOrders.length >0 && status ==="pending" && (<Button variant="outlined" onClick={handleActionsClick} size='small'>Actions</Button>)}
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {orderType.map((order) => (
-            <Row key={order.orderId} order={order} />
+            <Row
+              key={order.orderId}
+              order={order}
+              status={status}
+              orderType={orderType}
+            />
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <AlertDialogSlide open={open}  setOpen={setOpen} handleMarkAsCompleted={handleMarkAsCompleted}  handlecancelOrders={ handlecancelOrders} dialogType="actions"/>
+    </div>
   );
 }

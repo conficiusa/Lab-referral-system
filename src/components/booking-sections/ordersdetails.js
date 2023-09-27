@@ -8,7 +8,7 @@ export default function OrderDetails() {
 
   const pendingOrders = () => {
     if (orders.pending.length > 0) {
-      return <CollapsibleTable orderType={orders.pending} />;
+      return <CollapsibleTable orderType={orders.pending} status="pending"/>;
     } else {
       return <h6>You have no pending orders</h6>;
     }
@@ -16,7 +16,7 @@ export default function OrderDetails() {
 
   const completedOrders = () => {
     if (orders.completed.length > 0) {
-      return <CollapsibleTable orderType={orders.completed} />;
+      return <CollapsibleTable orderType={orders.completed} status="fulfilled"/>;
     } else {
       return <h6>You have no Completed orders</h6>;
     }
@@ -24,7 +24,7 @@ export default function OrderDetails() {
 
   const canceledOrders = () => {
     if (orders.canceled.length > 0) {
-      return <CollapsibleTable orderType={orders.canceled} />;
+      return <CollapsibleTable orderType={orders.canceled} status="cancelled"/>;
     } else {
       return <h6>You have no Cancelled orders</h6>;
     }
