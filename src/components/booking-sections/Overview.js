@@ -25,7 +25,6 @@ export default function Overview() {
             <div className={styles.date}>
                 <input type="date" name="date" id="date"/>
             </div>
-
             <div className={styles.insights}>
                 <div className={styles.sales}>
                     <AnalyticsSharp className={styles.span}/>
