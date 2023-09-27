@@ -244,6 +244,7 @@ main .insights>div.expenses .span{
     gap: 1rem;
     text-align: right;
     justify-content: flex-end;
+    align-items: center;
 }
 
 /* recent updates */

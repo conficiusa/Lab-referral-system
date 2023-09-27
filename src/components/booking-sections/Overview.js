@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from '../../assets/styles/bookingstyles/overview.module.css'
 import { AnalyticsSharp, ShoppingCartSharp } from '@mui/icons-material'
-import userprofile from '../../assets/images/profile-1.jpg'
 import profile1 from '../../assets/images/profile-3.jpg'
 import CollapsibleTable from '../../mui-components/table'
 import { Button } from '@mui/material'
 import { useDashboardContext } from '../../contexts/dashboardcontext'
 import { useOrdersContext } from '../../contexts/orderscontext';
+import AccountMenu from '../../mui-components/accountmenu.js'
 
 export default function Overview() {
     const {setDashboardState} = useDashboardContext()
@@ -95,8 +95,8 @@ export default function Overview() {
                         <p style={{marginBottom:"-10px"}} className={styles.p}>Hey, <b>Conficius</b></p>
                         <small className={styles.textmuted}>Admin</small>
                     </div>
-                    <div className={styles.profilephoto}>
-                        <img src={userprofile} alt="profile"/>
+                    <div>
+                        <AccountMenu />
                     </div>
                 </div>
             </div>
@@ -107,6 +107,7 @@ export default function Overview() {
                             <div className={styles.profilephoto}>
                                 <img src={profile1} alt="profile"/>
                             </div>
+                            
                             <div className={styles.message}>
                                 <p className={styles.p}><b>Hammy</b> received his order of Liver Function Test</p>
                                 <small className={styles.textmuted}>6 minutes Ago</small>

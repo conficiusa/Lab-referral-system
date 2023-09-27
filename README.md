@@ -72,3 +72,33 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 <!-- i was working on aadding the delete dialog next step is to use to the delete button to open the dialog  -->
+ switch (dialogType) {
+    case "action":
+      return (
+        <DialogActions>
+          <Button onClick={handleCompleted} sx={{ fontWeight: 500, color: "#41f1b6" }}>
+            Mark as completed
+          </Button>
+          <Button onClick={handleorderCancel} sx={{ fontWeight: 500, color: "#ff7782" }}>
+            Cancel Order
+          </Button>
+          <Button onClick={handleClose} sx={{ fontWeight: 500 }}>
+            Close
+          </Button>
+        </DialogActions>
+      );
+    case "delete":
+      return(
+        <DialogActions>
+          <Button onClick={handleDelete} sx={{ fontWeight: 500}}>
+            Yes
+          </Button>
+          <Button onClick={handleClose} sx={{ fontWeight: 500 }}>
+            No
+          </Button>
+        </DialogActions>
+      )  
+    default:
+      throw new Error("Invalid dialogType");
+  }
+
