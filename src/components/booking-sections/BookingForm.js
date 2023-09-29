@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "../../assets/styles/bookingstyles/BookingForm.module.css"
 import First from './first';
 import Second from './second';
-import { Box, Button } from '@mui/material';
+import { Box, Button, FormControl } from '@mui/material';
 
 export default function BookingForm() {
   const [page, setPage] = useState(0);
@@ -25,6 +25,7 @@ export default function BookingForm() {
         {page===0 && "General Information"}
         {page===1 && "Specific Information"}
        </h4>
+       <FormControl className={styles.orderform} variant="standard" sx={{ marginTop: "1rem", minWidth: 120 }}>
       {ConditionalComponents()}
        <Box className={styles.orderpagination}>
         {page !==0 && <Button size="large" sx={{float:"left"}} onClick={() => {
@@ -34,6 +35,8 @@ export default function BookingForm() {
           setPage(page + 1)
           }}>Next</Button>
       </Box>
+      </FormControl>
+c
     </Box>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../../assets/styles/bookingstyles/BookingForm.module.css";
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Box, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import MultipleSelectChip from '../../mui-components/chip';
 import ControlledRadioButtonsGroup from '../../mui-components/radio';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -23,7 +23,6 @@ const {formData, setFormData} = useFormContext();
   };
   return (
     <Box className={styles.orderwrapper}>
-      <FormControl className={styles.orderform} variant="standard" sx={{ marginTop: "1rem", minWidth: 120 }}>
       <div className={styles.formwrapper}>
           <Box className={styles.orderleft}>
           <Box className={styles.item}>
@@ -100,9 +99,7 @@ const {formData, setFormData} = useFormContext();
             </LocalizationProvider>
           </Box> 
         </Box>
-        </div>
-      </FormControl>
-      
+        </div>      
     </Box>
   );
 }
