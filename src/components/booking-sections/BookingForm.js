@@ -3,6 +3,7 @@ import styles from "../../assets/styles/bookingstyles/BookingForm.module.css"
 import First from './first';
 import Second from './second';
 import { Box, Button, FormControl } from '@mui/material';
+import Submit from './submit';
 
 export default function BookingForm() {
   const [page, setPage] = useState(0);
@@ -13,6 +14,8 @@ export default function BookingForm() {
         return <First />;
       case 1 :
         return <Second />
+      case 2 :
+        return <Submit />
       default:
         return <First />
     }
@@ -36,7 +39,6 @@ export default function BookingForm() {
           }}>Next</Button>
       </Box>
       </FormControl>
-c
     </Box>
   )
 }

@@ -86,7 +86,7 @@ function Row({ order, status }) {
           <Button sx={{ fontSize: "10px", textDecoration: "underline" }} onClick={() => setOpen(!open)}>Details</Button>
         </TableCell>
         <TableCell align="center">
-          {status === "pending" ? <ControlledCheckbox order={order} /> : <IconButton onClick={() => deleteOrder(order.orderId)} dialogType="delete"><DeleteOutlineSharp sx={{ color: "red" }} /></IconButton>}
+          {status === "pending" ? <ControlledCheckbox order={order} /> : <IconButton onClick={() => deleteOrder(order.orderId)}><DeleteOutlineSharp sx={{ color: "red" }} /></IconButton>}
         </TableCell>
       </TableRow>
       <TableRow>

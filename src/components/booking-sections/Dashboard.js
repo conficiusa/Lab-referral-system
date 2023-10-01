@@ -4,7 +4,6 @@ import ScrollableTabsButtonAuto from '../../mui-components/tabs'
 import Overview from './Overview'
 import { useDashboardContext } from '../../contexts/dashboardcontext'
 import OrderDetails from './ordersdetails'
-import { OrdersProvider } from '../../contexts/orderscontext'
 
 export default function Dashboard() {
   const {dashboardState} = useDashboardContext();
@@ -21,12 +20,10 @@ export default function Dashboard() {
   }
   return (
     <div className={styles.dashboardwrapper}>
-      <OrdersProvider>
         <ScrollableTabsButtonAuto/>
         <div className={styles.tabcontents}>
             {ConditionalDashboardstate()}
         </div>
-      </OrdersProvider>
     </div>
   )
 }
